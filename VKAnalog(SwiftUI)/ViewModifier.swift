@@ -13,9 +13,9 @@ struct CircleShadow: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background(Circle()
-                            .fill(Color.white)
-                            .shadow(color: shadowColor, radius: shadowRadius))
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.clear, lineWidth: 0))
+            .shadow(color: shadowColor, radius: shadowRadius)
     }
 }
 
