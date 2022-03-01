@@ -12,7 +12,6 @@ struct TabBar: View {
     init() {
         UITabBar.appearance().backgroundColor = .clear
     }
-    
     var body: some View {
         
         TabView {
@@ -23,13 +22,13 @@ struct TabBar: View {
                     Text("News")
                 }
             
-            FriendListView()
+            FriendListView(viewModel: FriendViewModel(friendsService: FriendsAPI()))
                 .tabItem {
                     Image(systemName: "person.2")
                     Text("Friends")
                 }
             
-            GroupListView()
+            GroupListView(viewModel: GroupViewModel(groupService: GroupsAPI()))
                 .tabItem {
                     Image(systemName: "person.3")
                     Text("Groups")
