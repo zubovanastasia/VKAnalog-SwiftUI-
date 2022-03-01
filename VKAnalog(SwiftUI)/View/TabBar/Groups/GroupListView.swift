@@ -6,26 +6,23 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct GroupListView: View {
     
-    init(){
+    @ObservedObject var viewModel: GroupViewModel
+    
+    init(viewModel: GroupViewModel) {
+        self.viewModel = viewModel
         UITableView.appearance().backgroundColor = .gray
     }
-    
-    @State private var groups: [GroupModel] = [
-        GroupModel(name: "Music", imageName: "111"),
-        GroupModel(name: "IT", imageName: "111"),
-        GroupModel(name: "Sport", imageName: "111"),
-        GroupModel(name: "Cinema", imageName: "111")
-    ]
     
     var body: some View {
         
         ZStack{
             
             List {
-                ForEach (groups.sorted(by: { $0.name < $1.name })) { group in
+                ForEach (viewModel.groups) { group in
                     GroupCell(group: group)
                     
                         .listRowBackground(Color.init(uiColor: .gray))
@@ -48,7 +45,7 @@ struct GroupCell: View {
             HStack{
                 
                 UserAvatar {
-                    Image(group.imageName)
+                    KFImage(URL(string: group.imageURL)!)
                 }
                 
                 TextUserNameBuilder {
@@ -56,11 +53,5 @@ struct GroupCell: View {
                 }
             }.padding()
         }
-    }
-}
-
-struct GroupListView_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupListView()
     }
 }

@@ -10,7 +10,7 @@ import QGrid
 
 struct PhotoGalleryView: View {
     
-    let friend: FriendModel
+    let friend: FriendsModel
     
     @State private var photos: [PhotoModel] = [
         PhotoModel(imageName: "111"),
@@ -28,7 +28,7 @@ struct PhotoGalleryView: View {
                     
                 }
             }
-            .navigationBarTitle(Text("Photos \(friend.name)"), displayMode: .inline)
+            .navigationBarTitle(Text("Photos \(friend.firstName) \(friend.lastName)"), displayMode: .inline)
             .background(Color.init(uiColor: .gray))
         }
     }
