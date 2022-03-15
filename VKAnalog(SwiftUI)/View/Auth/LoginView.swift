@@ -8,29 +8,6 @@
 import SwiftUI
 import Combine
 
-struct ContainerView: View {
-    
-    @State private var shouldShowMainView: Bool = false
-    
-    var body: some View {
-        
-        NavigationView {
-            
-            HStack {
-
-                ContentView(isUserLoggedIn: $shouldShowMainView)
-                
-                NavigationLink(destination: TabBar(), isActive: $shouldShowMainView) {
-                
-                    EmptyView()
-                }
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-            }
-        }.accentColor(.black)
-    }
-}
-
 struct ContentView: View {
     
     @State private var login = "User"
@@ -145,12 +122,6 @@ struct ContentView: View {
         } .onTapGesture {
             UIApplication.shared.endEditing()
         }.alert(isPresented: $showInvalidDataWarning, content: {Alert(title: Text("Error"), message: Text("Incorrent Login/Password"))})
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContainerView()
     }
 }
 

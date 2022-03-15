@@ -5,25 +5,8 @@
 //  Created by Anastasiia Zubova on 13.02.2022.
 //
 
-import SwiftUI
 import Foundation
 
-class FriendViewModel: ObservableObject {
-    
-    @Published var friends: [FriendsModel] = []
-    let friendsService: FriendService
-    
-    init(friendsService: FriendService) {
-        self.friendsService = friendsService
-    }
-    
-    public func fetchFriends() {
-        friendsService.getFriends(){ [weak self] friends in
-            guard let self = self else { return }
-            self.friends = friends!.response.items
-        }
-    }
-}
 // MARK: - Friend
 struct Friends: Codable {
     let response: FriendResponse

@@ -32,20 +32,3 @@ struct PhotoGalleryView: View {
             .background(Color.init(uiColor: .gray))
         }
     }
-
-struct PhotoFriendCell: View {
-    
-    let photo: PhotoModel
-    
-    var body: some View {
-        
-        ZStack {
-            
-            HStack{
-                Image(photo.imageName)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-            }
-        }
-    }
-}

@@ -90,26 +90,3 @@ struct FriendListView: View {
         }
     }
 }
-
-struct FriendCell: View {
-    
-    var friends: FriendsModel
-    
-    var body: some View {
-        
-        ZStack {
-            
-            HStack{
-                UserAvatar {
-                    KFImage(URL(string: friends.photo100!)!)
-                }
-                
-                TextUserNameBuilder {
-                    Text("\(friends.firstName) \(friends.lastName)")
-                }
-            }.padding()
-            
-            Spacer()
-        }
-    }
-}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NewsListView: View {
     
@@ -34,47 +35,5 @@ struct NewsListView: View {
                 .listStyle(.grouped)
             }
         }
-    }
-}
-
-
-struct NewsCell: View {
-    
-    let new: NewsModel
-    
-    var body: some View {
-        
-        ZStack {
-            
-            VStack{
-                HStack{
-                    UserAvatar {
-                        Image(new.imageAvatar)
-                    }
-                    Text(new.name)
-                        .modifier(TextUserNameModifier(size: 13, style: .regular, design: .default))
-                    Spacer()
-                }
-                HStack{
-                    Text(new.textPost)
-                    Spacer()
-                }
-                HStack{
-                    
-                    Image(new.imagePost)
-                        .frame(width: 300, height: 300, alignment: .center)
-                }
-                Spacer()
-            }
-            .padding()
-            
-            Spacer()
-        }
-    }
-}
-
-struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsListView()
     }
 }
