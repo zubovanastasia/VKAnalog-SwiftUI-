@@ -33,25 +33,3 @@ struct GroupListView: View {
         }
     }
 }
-
-struct GroupCell: View {
-    
-    let group: GroupModel
-    
-    var body: some View {
-        
-        ZStack{
-            
-            HStack{
-                
-                UserAvatar {
-                    KFImage(URL(string: group.imageURL)!)
-                }
-                
-                TextUserNameBuilder {
-                    Text(group.name)
-                }
-            }.padding()
-        }
-    }
-}

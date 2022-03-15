@@ -83,24 +83,3 @@ class WebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         decisionHandler(.cancel)
     }
 }
-
-struct ContainerViewStart: View {
-    
-    @ObservedObject var session = Session.shared
-    
-    var body: some View {
-        
-        NavigationView {
-            
-            HStack {
-                VKLoginWebView()
-                NavigationLink(destination: TabBar(), isActive: $session.accessGranted) {
-                    
-                    EmptyView()
-                }
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-            }
-        }.accentColor(.black)
-    }
-}

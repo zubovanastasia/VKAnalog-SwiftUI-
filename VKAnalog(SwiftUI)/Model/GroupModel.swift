@@ -5,24 +5,8 @@
 //  Created by Anastasiia Zubova on 13.02.2022.
 //
 
-import SwiftUI
+import Foundation
 
-class GroupViewModel: ObservableObject {
-    
-    @Published var groups: [GroupModel] = []
-    let groupService: GroupService
-    
-    init(groupService: GroupService) {
-        self.groupService = groupService
-    }
-    
-    public func fetch() {
-        groupService.getGroups() { [weak self] groups in
-            guard let self = self else { return }
-            self.groups = groups!.response.items
-        }
-    }
-}
 // MARK: - Main
 struct Groups: Codable {
     let response: GroupResponse
