@@ -13,15 +13,11 @@ struct ContainerLoginView: View {
     @State private var shouldShowMainView: Bool = false
     
     var body: some View {
-        
         NavigationView {
-            
             HStack {
-
-                ContentView(isUserLoggedIn: $shouldShowMainView)
-                
+                //ContentView(isUserLoggedIn: $shouldShowMainView)
+                LoginView(viewModel: LoginViewModel())
                 NavigationLink(destination: TabBar(), isActive: $shouldShowMainView) {
-                
                     EmptyView()
                 }
                 .navigationBarTitle("")

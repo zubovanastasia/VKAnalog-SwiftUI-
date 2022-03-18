@@ -7,15 +7,17 @@
 
 import SwiftUI
 import Combine
+import RealmSwift
 
-struct ContentView: View {
+struct LoginView: View {
     
     @State private var login = "User"
     @State private var password = "123"
     @State private var shouldShowLogo: Bool = true
     @State private var showInvalidDataWarning = false
+//    @Binding var isUserLoggedIn: Bool
     
-    @Binding var isUserLoggedIn: Bool
+    @ObservedObject var viewModel: LoginViewModel
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter
@@ -31,7 +33,8 @@ struct ContentView: View {
     private func verifyLoginData() {
         
         if login == "User" && password == "123" {
-            isUserLoggedIn = true
+            //isUserLoggedIn = true
+            viewModel.isUserLoggedIn = true
         } else {
             showInvalidDataWarning = true
         }
