@@ -7,14 +7,17 @@
 
 import SwiftUI
 import Combine
+import RealmSwift
 
-struct ContentView: View {
+struct LoginView: View {
     
-    @State private var login = ""
-    @State private var password = ""
+    @State private var login = "User"
+    @State private var password = "123"
     @State private var shouldShowLogo: Bool = true
+    @State private var showInvalidDataWarning = false
+//    @Binding var isUserLoggedIn: Bool
     
-   
+    @ObservedObject var viewModel: LoginViewModel
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter
@@ -27,7 +30,18 @@ struct ContentView: View {
             .map { _ in false}
     )
     
+    private func verifyLoginData() {
+        
+        if login == "User" && password == "123" {
+            //isUserLoggedIn = true
+            viewModel.isUserLoggedIn = true
+        } else {
+            showInvalidDataWarning = true
+        }
+    }
+    
     var body: some View {
+        
         ZStack {
             Rectangle()
                 .foregroundColor(.clear)
@@ -40,28 +54,27 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                
                 ScrollView {
                     
-                    Spacer(minLength: 175)
+                    Spacer(minLength: 160)
                     
                     VStack{
                         if shouldShowLogo {
                             Text("VK")
                                 .font(.system(size: 50, weight: .thin, design: .rounded))
                                 .foregroundStyle(
-                                       .linearGradient(
+                                    .linearGradient(
                                         colors: [.init(uiColor: .darkGray), .black, .black],
                                         startPoint: .top,
                                         endPoint: .bottom
-                                       )
-                                   )
-                                   
+                                    )
+                                )
                             
                             Spacer(minLength: -10)
                             
                             Text("ANALOG")
                                 .font(.system(size: 12, weight: .thin, design: .rounded))
-                             //   .blur(radius: 0.5)
                                 .foregroundStyle(Color.init(uiColor: .darkGray))
                         }
                         
@@ -75,7 +88,6 @@ struct ContentView: View {
                                 .disableAutocorrection(true)
                                 .background(Color.clear)
                             
-            
                             Spacer(minLength: 15)
                             
                             SecureField("Password", text: $password)
@@ -90,17 +102,17 @@ struct ContentView: View {
                         
                         Spacer(minLength: 50)
                         
-                        Button {
-                            print("Hello")
-                        } label: {
+                        Button(action: verifyLoginData) {
+                            
                             Text("L O G   I N")
                                 .padding()
                                 .foregroundColor(.black)
                                 .font(.system(size: 15, weight: .thin, design: .rounded))
                                 .frame(width: 250, height: 50, alignment: .center)
+                            
                         }
                         .disabled(login.isEmpty || password.isEmpty)
-                        }
+                    }
                 }.onReceive(keyboardIsOnPublisher) { isKeyboardOn in
                     withAnimation(Animation.easeOut(duration: 0.5)) {
                         self.shouldShowLogo = isKeyboardOn
@@ -112,13 +124,7 @@ struct ContentView: View {
             
         } .onTapGesture {
             UIApplication.shared.endEditing()
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        }.alert(isPresented: $showInvalidDataWarning, content: {Alert(title: Text("Error"), message: Text("Incorrent Login/Password"))})
     }
 }
 
