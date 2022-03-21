@@ -7,28 +7,41 @@
 
 import SwiftUI
 import QGrid
+import Kingfisher
 
 struct PhotoGalleryView: View {
-    
+    @ObservedObject var viewModel: PhotoViewModel
     let friend: FriendsModel
     
-    @State private var photos: [PhotoModel] = [
-        PhotoModel(imageName: "111"),
-        PhotoModel(imageName: "111"),
-        PhotoModel(imageName: "111"),
-        PhotoModel(imageName: "111")
+    let columns = [
+        GridItem(.flexible(minimum: 50), spacing: 2),
+        GridItem(.flexible(minimum: 50), spacing: 2),
+        GridItem(.flexible(minimum: 50), spacing: 2)
     ]
     
+    init(viewModel: PhotoViewModel, friend: FriendsModel) {
+        self.viewModel = viewModel
+        self.friend = friend
+    }
+    
     var body: some View {
-            
-            ZStack {
-                
-                QGrid(photos, columns: 3) {
-                    PhotoFriendCell(photo: $0)
-                    
+        ScrollView(.vertical) {
+            LazyVGrid(columns: columns, spacing: 2) {
+                ForEach(viewModel.photos) { photo in
+                    GeometryReader { geometry in
+                        NavigationLink(destination: PhotoFriendCell(photo: photo)) {
+                            KFImage(URL(string: photo.photoAvailable!.url)!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: geometry.size.width)
+                        }
+                    }
+                    .clipped()
+                    .aspectRatio(1, contentMode: .fit)
+                    .navigationBarTitle(Text("Photos \(friend.firstName) \(friend.lastName)"), displayMode: .inline)
+                    .background(Color.init(uiColor: .gray))
                 }
             }
-            .navigationBarTitle(Text("Photos \(friend.firstName) \(friend.lastName)"), displayMode: .inline)
-            .background(Color.init(uiColor: .gray))
-        }
+        }.onAppear { viewModel.fetchPhoto(friendID: String(friend.id)) }
     }
+}
