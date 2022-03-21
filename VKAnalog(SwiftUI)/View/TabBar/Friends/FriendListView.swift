@@ -76,7 +76,7 @@ struct FriendListView: View {
                 List {
                     ForEach((viewModel.friends.filter({ "\(String(describing: $0.firstName))".contains(searchText) || searchText.isEmpty}))) { friend in
                         
-                        NavigationLink(destination: PhotoGalleryView(friend: friend)) {
+                        NavigationLink(destination: PhotoGalleryView(viewModel: PhotoViewModel(photoService: PhotoAPI()), friend: friend)) {
                             
                             FriendCell(friends: friend)
                         }

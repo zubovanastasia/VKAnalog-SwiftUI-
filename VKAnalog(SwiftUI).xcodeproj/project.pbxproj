@@ -37,6 +37,8 @@
 		633262FF27E486A0002759D3 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633262FE27E486A0002759D3 /* MainCoordinator.swift */; };
 		6332630127E48F6B002759D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332630027E48F6B002759D3 /* AppDelegate.swift */; };
 		6332630327E48FBE002759D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332630227E48FBE002759D3 /* SceneDelegate.swift */; };
+		6332630527E8A993002759D3 /* PhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332630427E8A993002759D3 /* PhotoAPI.swift */; };
+		6332630727E8AC6D002759D3 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332630627E8AC6D002759D3 /* PhotoViewModel.swift */; };
 		6350730F27BD573A0069518B /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6350730E27BD573A0069518B /* NewsModel.swift */; };
 		638DD96D27BE64A500437269 /* VKLoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DD96C27BE64A400437269 /* VKLoginWebView.swift */; };
 		638DD96F27BE6CD300437269 /* FriendsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638DD96E27BE6CD300437269 /* FriendsAPI.swift */; };
@@ -79,6 +81,8 @@
 		633262FE27E486A0002759D3 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = View/Auth/MainCoordinator.swift; sourceTree = "<group>"; };
 		6332630027E48F6B002759D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6332630227E48FBE002759D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6332630427E8A993002759D3 /* PhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPI.swift; sourceTree = "<group>"; };
+		6332630627E8AC6D002759D3 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		6350730E27BD573A0069518B /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		638DD96C27BE64A400437269 /* VKLoginWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginWebView.swift; sourceTree = "<group>"; };
 		638DD96E27BE6CD300437269 /* FriendsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAPI.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				6302FBD827B922AF00710071 /* FriendModel.swift */,
 				633262BA27D7B44D002759D3 /* FriendViewModel.swift */,
 				6302FBE727B93F1100710071 /* PhotoModel.swift */,
+				6332630627E8AC6D002759D3 /* PhotoViewModel.swift */,
 				6302FBDA27B922BD00710071 /* GroupModel.swift */,
 				633262BC27D7B48F002759D3 /* GroupViewModel.swift */,
 			);
@@ -245,6 +250,7 @@
 				638DD97027BE6D8C00437269 /* Session.swift */,
 				638DD96E27BE6CD300437269 /* FriendsAPI.swift */,
 				63DE693327CE15AD005454F2 /* GroupsAPI.swift */,
+				6332630427E8A993002759D3 /* PhotoAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -350,12 +356,14 @@
 				633262FF27E486A0002759D3 /* MainCoordinator.swift in Sources */,
 				6302FBE827B93F1100710071 /* PhotoModel.swift in Sources */,
 				6302FBCD27B2ED6100710071 /* ViewBuilder.swift in Sources */,
+				6332630527E8A993002759D3 /* PhotoAPI.swift in Sources */,
 				633262BB27D7B44D002759D3 /* FriendViewModel.swift in Sources */,
 				638DD96D27BE64A500437269 /* VKLoginWebView.swift in Sources */,
 				6302FBD327B2F41400710071 /* GroupListView.swift in Sources */,
 				63DE692D27CD7EF4005454F2 /* ImageKingfisher.swift in Sources */,
 				63DE693427CE15AD005454F2 /* GroupsAPI.swift in Sources */,
 				633262BF27D7B4FF002759D3 /* ContainerLoginView.swift in Sources */,
+				6332630727E8AC6D002759D3 /* PhotoViewModel.swift in Sources */,
 				6332630127E48F6B002759D3 /* AppDelegate.swift in Sources */,
 				6332630327E48FBE002759D3 /* SceneDelegate.swift in Sources */,
 				633262FD27E484D8002759D3 /* LoginViewModel.swift in Sources */,

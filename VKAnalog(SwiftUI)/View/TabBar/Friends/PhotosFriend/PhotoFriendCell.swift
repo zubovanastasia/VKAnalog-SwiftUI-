@@ -7,19 +7,18 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct PhotoFriendCell: View {
-    
-    let photo: PhotoModel
+    var photo: PhotoModel
     
     var body: some View {
-        
         ZStack {
-            
             HStack{
-                Image(photo.imageName)
+                KFImage(URL(string: photo.photoAvailable!.url)!)
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: photo.photoAvailable!.width / 2, height: photo.photoAvailable!.height / 2)
+                    .aspectRatio(1, contentMode: .fill)
                 
                 Spacer().frame(height: 50.0)
             }
@@ -27,7 +26,6 @@ struct PhotoFriendCell: View {
                 LikeButtonCell()
                 
                 Spacer()
-                
             }.padding()
         }
     }
